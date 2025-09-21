@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Your Product",
+    "price": 29.99,
+    "description": "Product description",
+    "image": "https://github.com/IceBerg323/secure-marketplace/blob/main/Banana-Single.jpg?raw=true",
+    "squareLink": "https://square.link/u/f432DNy1"
+  },
+  {
+    "id": 1,
+    "name": "Your Product",
+    "price": 29.99,
+    "description": "Product description",
+    "image": "https://github.com/IceBerg323/secure-marketplace/blob/main/Banana-Single.jpg?raw=true",
+    "squareLink": "https://square.link/u/f432DNy1"
+  }
+]

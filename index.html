@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: white;
+            color: black;
+            min-height: 100vh;
+            padding: 10px;
+            line-height: 1.4;
+        }
+
+        .terminal {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: black;
+        }
+
+        .header {
+            border-bottom: 1px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .prompt {
+            color: black;
+        }
+
+        .command {
+            color: black;
+        }
+
+        .nav {
+            margin-bottom: 20px;
+        }
+
+        .nav button {
+            background: transparent;
+            border: 1px solid black;
+            color: black;
+            padding: 8px 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .nav button:hover,
+        .nav button.active {
+            background-color: black;
+            color: white;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .product {
+            border: 0px solid #00ff00;
+            padding: 20px;
+            background-color: white;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .product-name {
+            color: black;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: black;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: #00ff00;
+            margin-top: 10px;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #666;
+            padding: 40px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #00ff00;
+            padding: 40px;
+        }
+
+        /* Style for Square buttons to fit terminal theme */
+        .square-checkout {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .square-checkout > div {
+            border-radius: 0px !important;
+            border: 0px solid black !important;
+            width: 100% !important;
+            max-width: 280px !important;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .terminal {
+                padding: 10px;
+                border-radius: 0px;
+                margin: 0;
+            }
+            
+            .header {
+                text-align: center;
+                padding-bottom: 15px;
+            }
+            
+            .prompt {
+                font-size: 16px;
+                word-break: break-word;
+            }
+            
+            .product {
+                max-width: 100%;
+                padding: 15px;
+                margin: 0 5px;
+            }
+            
+            .product-name {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+            
+            .product-price {
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+            
+            .product-description {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+            
+            .square-checkout > div {
+                max-width: 100% !important;
+            }
+            
+            .square-checkout a {
+                font-size: 14px !important;
+                line-height: 36px !important;
+                height: 36px !important;
+                min-width: 100% !important;
+            }
+        }
+
+        /* Small Mobile Styles */
+        @media (max-width: 480px) {
+            .terminal {
+                border: none;
+                padding: 8px;
+            }
+            
+            .product-grid {
+                gap: 20px;
+                padding: 0 5px;
+            }
+            
+            .product {
+                padding: 12px;
+            }
+            
+            .product-name {
+                font-size: 16px;
+            }
+            
+            .product-price {
+                font-size: 15px;
+            }
+            
+            .product-description {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="header">
+            <div class="prompt">A store that doesn't track your data :)</div>
+        </div>
+
+        <nav class="nav">
+            <button onclick="showSection('store')" class="active" id="store-btn">items</button>
+        </nav>
+
+        <!-- Store Section -->
+        <div id="store" class="section active">
+            <div class="prompt"></div>
+            <div id="products" class="product-grid">
+                <div class="loading">Loading products...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application state
+        let products = [];
+
+        // Load products from JSON file
+        async function loadProducts() {
+            try {
+                const response = await fetch('products.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load products');
+                }
+                products = await response.json();
+                renderProducts();
+            } catch (error) {
+                console.error('Error loading products:', error);
+                document.getElementById('products').innerHTML = 
+                    '<div class="error">Failed to load products. Please try again later.</div>';
+            }
+        }
+
+        // Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            document.getElementById(sectionName + '-btn').classList.add('active');
+            
+            // Refresh content based on section
+            if (sectionName === 'store') {
+                renderProducts();
+            }
+        }
+
+        // Product Rendering with Square Integration
+        function renderProducts() {
+            const container = document.getElementById('products');
+            
+            if (products.length === 0) {
+                container.innerHTML = '<div class="empty-state">No products found.</div>';
+                return;
+            }
+
+            container.innerHTML = products.map((product, index) => `
+                <div class="product">
+                    ${product.image ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; max-height: 200px; object-fit: contain; margin-bottom: 10px; border: 1px solid #333;">` : ''}
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-description">${product.description}</div>
+                    
+                    <!-- Square Payment Button -->
+                    <div class="square-checkout">
+                        <div style="
+                            overflow: auto;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-end;
+                            align-items: center;
+                            width: 100%;
+                            max-width: 259px;
+                            background: #FFFFFF;
+                            border: 1px solid rgba(0, 0, 0, 0.1);
+                            box-shadow: -2px 10px 5px rgba(0, 0, 0, 0);
+                            border-radius: 0px;
+                            font-family: IBM Plex Mono, SQ Market, Helvetica, Arial, sans-serif;
+                        ">
+                            <div style="padding: 15px;">
+                                <a target="_blank" 
+                                   data-url="${product.squareLink || 'https://square.link/u/eJLJBC9N?src=embd'}" 
+                                   href="${product.squareLink || 'https://square.link/u/eJLJBC9N?src=embed'}" 
+                                   id="checkout-button-${product.id}"
+                                   style="
+                                       display: inline-block;
+                                       font-size: 16px;
+                                       line-height: 40px;
+                                       height: 40px;
+                                       color: #ffffff;
+                                       min-width: 200px;
+                                       background-color: #006aff;
+                                       text-align: center;
+                                       box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
+                                       border-radius: 0px;
+                                       text-decoration: none;
+                                   ">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add Square checkout functionality to each button
+            products.forEach(product => {
+                const button = document.getElementById(`checkout-button-${product.id}`);
+                if (button) {
+                    button.addEventListener('click', function (e) {
+                        showCheckoutWindow(e, this);
+                    });
+                }
+            });
+        }
+
+        // Square checkout window function
+        function showCheckoutWindow(e, buttonElement) {
+            e.preventDefault();
+            const url = buttonElement.getAttribute('data-url');
+            const title = 'Square Payment Links';
+            
+            // Some platforms embed in an iframe, so we want to top window to calculate sizes correctly
+            const topWindow = window.top ? window.top : window;
+            
+            // Fixes dual-screen position - Most browsers vs Firefox
+            const dualScreenLeft = topWindow.screenLeft !== undefined ? topWindow.screenLeft : topWindow.screenX;
+            const dualScreenTop = topWindow.screenTop !== undefined ? topWindow.screenTop : topWindow.screenY;
+            
+            const width = topWindow.innerWidth ? topWindow.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+            const height = topWindow.innerHeight ? topWindow.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+            
+            const h = height * .75;
+            const w = 500;
+            const systemZoom = width / topWindow.screen.availWidth;
+            const left = (width - w) / 2 / systemZoom + dualScreenLeft;
+            const top = (height - h) / 2 / systemZoom + dualScreenTop;
+            
+            const newWindow = window.open(url, title, `scrollbars=yes, width=${w / systemZoom}, height=${h / systemZoom}, top=${top}, left=${left}`);
+            if (window.focus) newWindow.focus();
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+        });
+    </script>
+
+    <!-- Square Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono">
+</body>
+</html>
