@@ -31,50 +31,48 @@
         }
 
         .header {
-            border-bottom: 0px solid black;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            height: 160px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    border-bottom: 0px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .prompt {
-            color: black;
-            font-size: 14px;
-            animation: spin 10s linear infinite;
-            width: 200px;
-            height: 200px;
-            position: relative;
-margin-top: 20px;
-        }
+.prompt {
+    color: black;
+    font-size: 14px;
+    animation: spin 10s linear infinite;
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
 
-        .prompt svg {
-            width: 200px;
-            height: 200px;
-        }
+.prompt svg {
+    width: 200px;
+    height: 200px;
+}
 
-        .prompt path {
-            fill: none;
-        }
+.prompt path {
+    fill: none;
+}
 
-        .prompt text {
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            fill: black;
-        }
+.prompt text {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    fill: black;
+}
 
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
         .command {
             color: black;
         }
@@ -124,9 +122,9 @@ margin-top: 20px;
         }
 
         .product {
-            border: 1px solid #00ff00;
+            border: 0px solid #00ff00;
             padding: 20px;
-            background-color: rgba(0, 255, 0, 0.05);
+            background-color: white;
             width: 100%;
             max-width: 400px;
             text-align: center;
@@ -180,7 +178,7 @@ margin-top: 20px;
         
         .square-checkout > div {
             border-radius: 0px !important;
-            border: 1px solid black !important;
+            border: 0px solid black !important;
             width: 100% !important;
             max-width: 280px !important;
         }
@@ -235,11 +233,10 @@ margin-top: 20px;
             }
             
             .square-checkout a {
-                font-size: 1px !important;
+                font-size: 14px !important;
                 line-height: 36px !important;
                 height: 36px !important;
                 min-width: 100% !important;
-                padding: 0 25px !important;
             }
         }
 
@@ -275,27 +272,27 @@ margin-top: 20px;
 </head>
 <body>
     <div class="terminal">
-        <div class="header">
-            <div class="prompt">
-                <svg>
-                    <defs>
-                        <path id="circle" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
-                    </defs>
-                    <text>
-                        <textPath href="#circle">
-                            A store that doesn't track your data :) • A store that doesn't track your data :) • 
-                        </textPath>
-                    </text>
-                </svg>
-            </div>
-        </div>
+<div class="header">
+    <div class="prompt">
+        <svg>
+            <defs>
+                <path id="circle" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+            </defs>
+            <text>
+                <textPath href="#circle">
+                    A store that doesn't track your data :) • A store that doesn't track your data :) • 
+                </textPath>
+            </text>
+        </svg>
+    </div>
+</div>
 
         <nav class="nav">
-            <button onclick="showSection('store')" class="active" id="store-btn">store</button>
+            <button onclick="showSection('store')" class="active" id="store-btn">items</button>
         </nav>
 
         <!-- Store Section -->
-        <div id="store" class="section active">
+ <div id="store" class="section active">
     <div class="section-title">Shop</div>
     <div id="products" class="product-grid">
                 <div class="loading">Loading products...</div>
