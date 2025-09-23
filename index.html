@@ -366,6 +366,7 @@ if (sectionName === 'store') {
 } else if (sectionName === 'documents') {
     renderDocuments();
 }
+} 
 
 function renderDocuments() {
     const container = document.getElementById('document-list');
@@ -382,13 +383,12 @@ function renderDocuments() {
             <div class="product-description">${document.description}</div>
             
             <div class="square-checkout">
-                <div style="[same styling as your buy buttons]">
-                    <div style="padding: 15px;">
-                        <a href="${document.fileUrl}" 
-                           target="_blank"
-                           download
-                           style="[button styling with green background #00aa00]">Download</a>
-                    </div>
+<div style="overflow: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; width: 100%; max-width: 259px; background: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 0px; font-family: 'Courier New', monospace;">
+    <div style="padding: 15px;">
+        <a href="${document.fileUrl}" 
+           target="_blank"
+           download
+           style="display: inline-block; font-size: 16px; line-height: 40px; height: 40px; color: #ffffff; min-width: 200px; background-color: #00aa00; text-align: center; border-radius: 0px; text-decoration: none;">Download</a>                    </div>
                 </div>
             </div>
         </div>
