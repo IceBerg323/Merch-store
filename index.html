@@ -305,6 +305,13 @@
 <!-- Documents Section -->
 <div id="documents" class="section">
     <div class="section-title"></div>
+    <div style="text-align: center; margin-top: 30px;">
+    <div style="overflow: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; width: 259px; background: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.1); box-shadow: -2px 10px 5px rgba(0, 0, 0, 0); border-radius: 10px; font-family: IBM Plex Mono, SQ Market, Helvetica, Arial, sans-serif; margin: 0 auto;">
+        <div style="padding: 20px;">
+            <a target="_blank" data-url="https://square.link/u/g1UgOMtF?src=embd" href="https://square.link/u/g1UgOMtF?src=embed" id="donate-button" style="display: inline-block; font-size: 18px; line-height: 48px; height: 48px; color: #ffffff; min-width: 212px; background-color: #006aff; text-align: center; box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset; border-radius: 0px; text-decoration: none;">Donate</a>
+        </div>
+    </div>
+</div>
     <div id="document-list" class="product-grid">
         <div class="loading">Loading documents...</div>
     </div>
@@ -494,6 +501,31 @@ function renderDocuments() {
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
             loadDocuments();
+            
+                        // Setup donate button functionality with Square code
+            const donateButton = document.getElementById('donate-button');
+            if (donateButton) {
+                donateButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const url = donateButton.getAttribute('data-url');
+                    const title = 'Square Payment Links';
+                    
+                    // Some platforms embed in an iframe, so we want to top window to calculate sizes correctly
+                    const topWindow = window.top ? window.top : window;
+                    // Fixes dual-screen position - Most browsers vs Firefox
+                    const dualScreenLeft = topWindow.screenLeft !== undefined ? topWindow.screenLeft : topWindow.screenX;
+                    const dualScreenTop = topWindow.screenTop !== undefined ? topWindow.screenTop : topWindow.screenY;
+                    const width = topWindow.innerWidth ? topWindow.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+                    const height = topWindow.innerHeight ? topWindow.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+                    const h = height * .75;
+                    const w = 500;
+                    const systemZoom = width / topWindow.screen.availWidth;
+                    const left = (width - w) / 2 / systemZoom + dualScreenLeft;
+                    const top = (height - h) / 2 / systemZoom + dualScreenTop;
+                    const newWindow = window.open(url, title, `scrollbars=yes, width=${w / systemZoom}, height=${h / systemZoom}, top=${top}, left=${left}`);
+                    if (window.focus) newWindow.focus();
+                });
+            }
         });
     </script>
 
@@ -501,4 +533,5 @@ function renderDocuments() {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono">
 </body>
 </html>
+
 
