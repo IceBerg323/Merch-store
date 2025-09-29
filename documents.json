@@ -1,11 +1,67 @@
 [
   {
     "id": 1,
-    "name": "Boston Richey Not Guilty Verdict",
-    "description": "not guilty verdict",
-    "fileUrl": "https://archive.org/details/boston-richey-guilty-verdict",
-    "fileType": "PDF",
+    "name": "P Diddy indictment",
+    "description": "the end of the diddy party",
+    "fileUrl": "https://archive.org/details/sean-combs-indictment",
+    "fileType": "",
     "fileSize": ""
-  }
-
+  },
+    {
+    "id": 2,
+    "name": "P Diddy v. Cassie lawsuit",
+    "description": "cassie lawsuit against diddy",
+    "fileUrl": "https://archive.org/details/diddy-cassie_202509",
+    "fileType": "",
+    "fileSize": ""
+  },
+    {
+    "id": 3,
+    "name": "50 Cent v. Plastic Surgeon",
+    "description": "50 Cent false plastic surgery allegations",
+    "fileUrl": "https://archive.org/details/50-cent-complaint",
+    "fileType": "",
+    "fileSize": ""
+  },
+      {
+    "id": 4,
+    "name": "6ix9ine indictment",
+    "description": "the infamous tr3yway takedown",
+    "fileUrl": "https://archive.org/details/69-indictment",
+    "fileType": "",
+    "fileSize": ""
+  },
+        {
+    "id": 5,
+    "name": "NBA YoungBoy Utah fraud/drug charges",
+    "description": "yb calling pharmacy for fake scripts in utah",
+    "fileUrl": "https://archive.org/details/nba-yb-utah-fraud",
+    "fileType": "",
+    "fileSize": ""
+  },
+          {
+    "id": 6,
+    "name": "NBA YoungBoy indictmetn louisiana",
+    "description": "Nba fed indictment in louisiana",
+    "fileUrl": "https://archive.org/details/nba-yb-louisiana",
+    "fileType": "",
+    "fileSize": ""
+  },
+            {
+    "id": 7,
+    "name": "NBA YoungBoy Trump pardon/clemency",
+    "description": "Trump ",
+    "fileUrl": "https://archive.org/details/nba-youngboy-pardon",
+    "fileType": "",
+    "fileSize": ""
+  },
+              {
+    "id": 8,
+    "name": "Lil Durk Murder-for-Hire indictment",
+    "description": "Lil Durk, Quando Rondo- Lul Pab sitty",
+    "fileUrl": "https://archive.org/details/lil-durk-idictment",
+    "fileType": "",
+    "fileSize": ""
+  },
 ]
+
