@@ -4,7 +4,15 @@
     "name": "P Diddy indictment",
     "description": "the end of the diddy party",
     "fileUrl": "https://archive.org/details/sean-combs-indictment",
-    "fileType": "pdf",
+    "fileType": "",
+    "fileSize": ""
+  },
+    {
+    "id": 1,
+    "name": "NWA letter from FBI",
+    "description": "After NWA release 'Fuck The Police' the FBI sent this letter",
+    "fileUrl": "https://archive.org/details/n.-w.-a.-letter-from-fbi-to-nwa",
+    "fileType": "",
     "fileSize": ""
   },
 {
@@ -12,7 +20,7 @@
     "name": "P Diddy v. Cassie lawsuit",
     "description": "cassie lawsuit against diddy",
     "fileUrl": "https://archive.org/details/diddy-cassie_202509",
-    "fileType": "pdf",
+    "fileType": "",
     "fileSize": ""
   },
 {
@@ -20,7 +28,7 @@
     "name": "50 Cent v. Plastic Surgeon",
     "description": "50 Cent false plastic surgery allegations",
     "fileUrl": "https://archive.org/details/50-cent-complaint",
-    "fileType": "pdf",
+    "fileType": "",
     "fileSize": ""
   },
 {
@@ -28,7 +36,7 @@
     "name": "6ix9ine indictment",
     "description": "the infamous tr3yway takedown",
     "fileUrl": "https://archive.org/details/69-indictment",
-    "fileType": "pdf",
+    "fileType": "",
     "fileSize": ""
   },
 {
@@ -36,15 +44,15 @@
     "name": "NBA YoungBoy Utah fraud/drug charges",
     "description": "yb calling pharmacy for fake scripts in utah",
     "fileUrl": "https://archive.org/details/nba-yb-utah-fraud",
-    "fileType": "pdf",
+    "fileType": "",
     "fileSize": ""
   },
 {
     "id": 6,
-    "name": "NBA YoungBoy indictmetn louisiana",
+    "name": "NBA YoungBoy indictment louisiana",
     "description": "Nba fed indictment in louisiana",
     "fileUrl": "https://archive.org/details/nba-yb-louisiana",
-    "fileType": "pdf",
+    "fileType": "",
     "fileSize": ""
   },
 {
@@ -52,18 +60,51 @@
     "name": "NBA YoungBoy Trump pardon/clemency",
     "description": "Trump ",
     "fileUrl": "https://archive.org/details/nba-youngboy-pardon",
-    "fileType": "pdf",
+    "fileType": "",
     "fileSize": ""
   },
 {
     "id": 8,
     "name": "Lil Durk Murder-for-Hire indictment",
-    "description": "Lil Durk, Quando Rondo- Lul Pab sitty",
+    "description": "Lil Durk, Quando Rondo- Lul Pab situation",
     "fileUrl": "https://archive.org/details/lil-durk-idictment",
-    "fileType": "pdf",
+    "fileType": "",
+    "fileSize": ""
+  },
+  {
+    "id": 9,
+    "name": "Dr Dre v. Death Row",
+    "description": "Dr Dre lawsuit against DeathRow 2010",
+    "fileUrl": "https://archive.org/details/deathrowsuit",
+    "fileType": "",
+    "fileSize": ""
+  },
+    {
+    "id": 10,
+    "name": "Kanye West v. Walmart",
+    "description": "Ye sued Walmart for selling fake Yeezy shoes",
+    "fileUrl": "https://archive.org/details/kanye-west-v-walmart",
+    "fileType": "",
+    "fileSize": ""
+  },
+      {
+    "id": 11,
+    "name": "Dr Dre's 360 deal under Death Row",
+    "description": "the horrible deal Dr dre had with Death Row",
+    "fileUrl": "https://archive.org/details/kanye-west-v-walmart",
+    "fileType": "",
+    "fileSize": ""
+  },
+        {
+    "id": 12,
+    "name": "the RAP act",
+    "description": "a real legislative bill passed to limit the used of Lyrics and Art in court.",
+    "fileUrl": "https://archive.org/details/restoring-artistic-protection-act-of-2023-text",
+    "fileType": "",
     "fileSize": ""
   }
 ]
+
 
 
 
